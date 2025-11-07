@@ -25,7 +25,7 @@ function Bubbles({ count = 12, speed = 0.15 }) {
     const t = state.clock.getElapsedTime();
     for (let i = 0; i < count; i++) {
       const s = seeds[i];
-      s.y += (speed * s.v) * dt; // rise
+      s.y += speed * s.v * dt; // rise
       if (s.y > 0.9) {
         s.y = -0.9; // wrap
         s.x = (Math.random() - 0.5) * 1.2;
@@ -43,7 +43,7 @@ function Bubbles({ count = 12, speed = 0.15 }) {
   });
 
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, count]}> 
+    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 8, 8]} />
       <meshPhysicalMaterial
         transparent
