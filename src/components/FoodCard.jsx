@@ -1,15 +1,20 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { ASSETS } from "../constants/site";
 import StackPlayOnce from "./StackPlayOnce";
+const CardWaterBubbles = lazy(() => import("./ambient/CardWaterBubbles"));
 
 export default function FoodCard({ item }) {
   const src = ASSETS.images[item.imgKey];
   return (
     <div className="min-w-[68%] sm:min-w-[48%] md:min-w-[32%] lg:min-w-[24%] xl:min-w-[20%] snap-start">
       <div
-        className="rounded-2xl overflow-hidden shadow-lg border"
+        className="relative rounded-2xl overflow-hidden shadow-lg border"
         style={{ background: "var(--kk-midnight)", borderColor: "#0D2A3355" }}
       >
+        {/* Subtle 3D water + bubbles background (renders only when visible) */}
+        <Suspense fallback={null}>
+          <CardWaterBubbles className="pointer-events-none absolute inset-0 -z-10" />
+        </Suspense>
         {item.id === "stack-ya-mac" || item.imgKey === "stackYaMac" ? (
           <StackPlayOnce
             videoSrc="/media/stack-ya-mac-video.mp4"
