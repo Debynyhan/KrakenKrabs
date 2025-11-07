@@ -8,14 +8,15 @@ function Bubbles({ count = 12, speed = 0.15 }) {
   const mesh = useRef();
   const dummy = useMemo(() => new Object3D(), []);
   const seeds = useMemo(
-    () => Array.from({ length: count }, (_, i) => ({
-      x: (Math.random() - 0.5) * 1.2, // slightly wider than view
-      y: Math.random() * 1.6 - 0.8,   // start between -0.8..0.8
-      z: (Math.random() - 0.5) * 0.2, // shallow depth
-      r: 0.03 + Math.random() * 0.05, // bubble radius
-      v: 0.25 + Math.random() * 0.5,  // vertical speed multiplier
-      d: Math.random() * Math.PI * 2, // phase for lateral drift
-    })),
+    () =>
+      Array.from({ length: count }, () => ({
+        x: (Math.random() - 0.5) * 1.2, // slightly wider than view
+        y: Math.random() * 1.6 - 0.8, // start between -0.8..0.8
+        z: (Math.random() - 0.5) * 0.2, // shallow depth
+        r: 0.015 + Math.random() * 0.025, // smaller bubble radius
+        v: 0.25 + Math.random() * 0.5, // vertical speed multiplier
+        d: Math.random() * Math.PI * 2, // phase for lateral drift
+      })),
     [count]
   );
 
@@ -28,7 +29,7 @@ function Bubbles({ count = 12, speed = 0.15 }) {
       if (s.y > 0.9) {
         s.y = -0.9; // wrap
         s.x = (Math.random() - 0.5) * 1.2;
-        s.r = 0.03 + Math.random() * 0.05;
+        s.r = 0.015 + Math.random() * 0.025;
         s.d = Math.random() * Math.PI * 2;
       }
       const drift = Math.sin(t * (0.5 + s.v * 0.2) + s.d) * 0.08;
