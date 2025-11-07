@@ -11,20 +11,22 @@ import { SECTIONS } from "../../constants/site";
 export default function Home() {
   return (
     <div
-      className="min-h-screen"
+      className="relative min-h-screen"
       style={{ background: "var(--kk-abyss)", color: "var(--kk-light-foam)" }}
     >
       <OceanDepthBG />
-      <Header />
-      <main id="menu">
-        <Hero />
-        <PromoStrip />
-        {SECTIONS.map((s) => (
-          <CategoryRow key={s.id} section={s} />
-        ))}
-        <LocationHours />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Header />
+        <main id="menu">
+          <Hero />
+          <PromoStrip />
+          {SECTIONS.map((s) => (
+            <CategoryRow key={s.id} section={s} />
+          ))}
+          <LocationHours />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
