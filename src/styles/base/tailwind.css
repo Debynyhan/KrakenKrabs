@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (optional): root CSS variables for sea palette */
+:root {
+  /* Primary */
+  --kk-abyss: #0a1a2f; /* Abyss Blue-Black - background gradient base */
+  --kk-deep-sea: #003c7e; /* Primary Deep Sea - header, buttons */
+  --kk-aqua-wave: #00a9e0; /* Aqua Wave - hovers/highlights */
+  --kk-kraken-red: #e53935; /* Kraken Red - CTAs */
+  --kk-golden-treasure: #ffc93c; /* Golden Treasure - highlights */
+
+  /* Secondary */
+  --kk-rope-gold: #e6b756; /* Rope Gold */
+  --kk-seaweed: #2d6a4f; /* Seaweed Green */
+
+  /* Neutral / UI */
+  --kk-light-foam: #f7f9fb; /* Light Foam - text on dark */
+  --kk-warm-sand: #f3e3c1; /* Warm Sand - section backgrounds */
+  --kk-mist-gray: #d9e3ea; /* Mist Gray - dividers */
+  --kk-whitecap: #ffffff; /* Whitecap - card backgrounds */
+  --kk-charcoal-ink: #1b1b1e; /* Charcoal Ink - text on light */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  /* Map to defined variables to avoid undefined tokens */
+  background: var(--kk-abyss);
+  color: var(--kk-light-foam);
+}
+
+/* Aliases to support token names referenced in components */
+:root {
+  --kk-trench: var(--kk-abyss);
+  --kk-foam: var(--kk-light-foam);
+  --kk-midnight: var(--kk-deep-sea);
+  --kk-tide: var(--kk-aqua-wave);
+  --kk-turquoise: var(--kk-golden-treasure);
+}
+
+/* Utility: hide native scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Keyframes for decorative floating icons */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+.btn-outline-yellow {
+  background: transparent;
+  border-color: var(--kk-golden-treasure);
+  color: var(--kk-golden-treasure);
+  transition: background-color 200ms ease, color 200ms ease,
+    box-shadow 200ms ease;
+}
+.btn-outline-yellow:hover {
+  background: var(--kk-golden-treasure);
+  color: var(--kk-charcoal-ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
