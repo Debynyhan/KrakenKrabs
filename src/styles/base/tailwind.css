@@ -78,3 +78,21 @@ body {
   color: var(--kk-charcoal-ink);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
+
+/* Gradient CTA button */
+.btn-cta-gradient {
+  background: linear-gradient(90deg, #E53935, #FF7043);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.btn-cta-gradient:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.btn-cta-gradient:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+}

@@ -53,8 +53,7 @@ export default function Header() {
           href={TOAST_URL}
           target="_blank"
           rel="noreferrer noopener"
-          className="px-4 py-2 rounded-xl font-semibold shadow"
-          style={{ background: SEA.coral, color: SEA.trench }}
+          className="px-4 py-2 rounded-xl font-semibold shadow btn-cta-gradient"
         >
           Order Now
         </a>

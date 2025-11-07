@@ -117,8 +117,7 @@ export default function Hero() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#"
-                className="px-5 py-3 rounded-xl font-semibold shadow-lg"
-                style={{ background: SEA.coral, color: SEA.trench }}
+                className="px-5 py-3 rounded-xl font-semibold shadow-lg btn-cta-gradient"
               >
                 Order Now
               </a>
