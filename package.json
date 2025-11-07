@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:tunnel": "TUNNEL_HOST=0c06a3461e09.ngrok-free.app vite",
-    "dev:tunnel:5173": "TUNNEL_HOST=0c06a3461e09.ngrok-free.app vite --port 5173",
-    "dev:tunnel:nohmr": "TUNNEL_HOST=0c06a3461e09.ngrok-free.app DISABLE_HMR=1 vite",
+    "dev:tunnel": "TUNNEL_HOST=${TUNNEL_HOST:-c9358544ceb7.ngrok-free.app} vite",
+    "dev:tunnel:5173": "TUNNEL_HOST=${TUNNEL_HOST:-c9358544ceb7.ngrok-free.app} vite --port 5173",
+    "dev:tunnel:nohmr": "TUNNEL_HOST=${TUNNEL_HOST:-c9358544ceb7.ngrok-free.app} DISABLE_HMR=1 vite",
     "build": "vite build",
     "preview": "vite preview",
     "preview:tunnel": "vite build && vite preview --host"
