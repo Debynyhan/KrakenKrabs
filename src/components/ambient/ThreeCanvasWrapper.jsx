@@ -3,19 +3,23 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Object3D } from "three";
 
 // Lightweight bubbles using a single InstancedMesh; kept in the heavy chunk
-function Bubbles({ count = 12, speed = 0.15 }) {
+function Bubbles({ count = 48, speed = 0.12 }) {
   const mesh = useRef();
   const dummy = useMemo(() => new Object3D(), []);
   const seeds = useMemo(
     () =>
-      Array.from({ length: count }, () => ({
-        x: (Math.random() - 0.5) * 1.2,
-        y: Math.random() * 1.6 - 0.8,
-        z: (Math.random() - 0.5) * 0.2,
-        r: 0.015 + Math.random() * 0.025,
-        v: 0.25 + Math.random() * 0.5,
-        d: Math.random() * Math.PI * 2,
-      })),
+      Array.from({ length: count }, () => {
+        // Mix mostly small bubbles with occasional medium ones
+        const isSmall = Math.random() < 0.75;
+        return {
+          x: (Math.random() - 0.5) * 1.2,
+          y: Math.random() * 1.6 - 0.8,
+          z: (Math.random() - 0.5) * 0.2,
+          r: isSmall ? 0.006 + Math.random() * 0.01 : 0.012 + Math.random() * 0.02,
+          v: 0.2 + Math.random() * 0.6,
+          d: Math.random() * Math.PI * 2,
+        };
+      }),
     [count]
   );
 
@@ -28,13 +32,14 @@ function Bubbles({ count = 12, speed = 0.15 }) {
       if (s.y > 0.9) {
         s.y = -0.9;
         s.x = (Math.random() - 0.5) * 1.2;
-        s.r = 0.015 + Math.random() * 0.025;
+        const isSmall = Math.random() < 0.75;
+        s.r = isSmall ? 0.006 + Math.random() * 0.01 : 0.012 + Math.random() * 0.02;
         s.d = Math.random() * Math.PI * 2;
       }
       const drift = Math.sin(t * (0.5 + s.v * 0.2) + s.d) * 0.08;
       dummy.position.set(s.x + drift, s.y, s.z);
-      const scale = 0.8 + Math.sin(t * 1.5 + i) * 0.2;
-      dummy.scale.setScalar(s.r * (0.9 + scale * 0.2));
+      const scale = 0.7 + Math.sin(t * 1.5 + i) * 0.25;
+      dummy.scale.setScalar(s.r * (0.8 + scale * 0.3));
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
     }
@@ -43,15 +48,15 @@ function Bubbles({ count = 12, speed = 0.15 }) {
 
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-      <sphereGeometry args={[1, 8, 8]} />
+      <sphereGeometry args={[1, 6, 6]} />
       <meshPhysicalMaterial
         transparent
-        opacity={0.18}
-        roughness={0.2}
+        opacity={0.12}
+        roughness={0.25}
         metalness={0}
         color={"#8BD3E6"}
-        transmission={0.7}
-        thickness={0.2}
+        // keep physical look but slightly cheaper
+        transmission={0.45}
       />
     </instancedMesh>
   );
