@@ -5,7 +5,7 @@
 /* Design tokens (optional): root CSS variables for sea palette */
 :root {
   /* Primary - refreshed for lighter water background + award palette */
-  --kk-abyss: #e6f9ff; /* Pale water background */
+  --kk-abyss: #c6f0ff; /* Stronger water background (light blue) */
   --kk-deep-sea: #002e4d; /* Deep ocean blue for cards/hero overlays */
   --kk-aqua-wave: #00b4d8; /* Vibrant aqua for accents */
   --kk-kraken-red: #ff6b35; /* Warm coral accent */
@@ -81,8 +81,8 @@ body {
 
 /* Gradient CTA button */
 .btn-cta-gradient {
-  background: linear-gradient(90deg, #e53935, #ff7043);
-  color: #ffffff;
+  background: linear-gradient(90deg, #d4af37, #ff6b35);
+  color: #071422;
   border: none;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
@@ -95,4 +95,22 @@ body {
   transform: translateY(0);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   opacity: 0.95;
+}
+
+/* Hero gold shimmer effect */
+@keyframes hero-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.hero-shimmer {
+  background-image: linear-gradient(90deg, rgba(212,175,55,0.95) 0%, rgba(255,255,255,0.95) 50%, rgba(212,175,55,0.95) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-shimmer 3.5s linear infinite;
 }
