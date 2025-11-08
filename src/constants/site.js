@@ -23,14 +23,14 @@ export const ASSETS = {
 
 // Centralized theme tokens used across components
 export const SEA = {
-    trench: "#0A1A2F", // Abyss Blue-Black
-    midnight: "#003C7E", // Primary Deep Sea
+    trench: "#E6F9FF", // Pale water background
+    midnight: "#002E4D", // Deep ocean blue for cards/hero overlays
     kelp: "#2D6A4F", // Seaweed Green
-    tide: "#00A9E0", // Aqua Wave
-    turquoise: "#FFC93C", // Golden Treasure
-    foam: "#F7F9FB", // Light Foam
+    tide: "#00B4D8", // Vibrant Aqua
+    turquoise: "#D4AF37", // Trophy Gold
+    foam: "#FFFFFF", // Light foam (text on dark cards)
     sand: "#F3E3C1", // Warm Sand
-    coral: "#E53935", // Kraken Red
+    coral: "#FF6B35", // Warm coral accent
 };
 
 export const SECTIONS = [

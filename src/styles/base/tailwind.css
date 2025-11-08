@@ -4,12 +4,12 @@
 
 /* Design tokens (optional): root CSS variables for sea palette */
 :root {
-  /* Primary */
-  --kk-abyss: #0a1a2f; /* Abyss Blue-Black - background gradient base */
-  --kk-deep-sea: #003c7e; /* Primary Deep Sea - header, buttons */
-  --kk-aqua-wave: #00a9e0; /* Aqua Wave - hovers/highlights */
-  --kk-kraken-red: #e53935; /* Kraken Red - CTAs */
-  --kk-golden-treasure: #ffc93c; /* Golden Treasure - highlights */
+  /* Primary - refreshed for lighter water background + award palette */
+  --kk-abyss: #e6f9ff; /* Pale water background */
+  --kk-deep-sea: #002e4d; /* Deep ocean blue for cards/hero overlays */
+  --kk-aqua-wave: #00b4d8; /* Vibrant aqua for accents */
+  --kk-kraken-red: #ff6b35; /* Warm coral accent */
+  --kk-golden-treasure: #d4af37; /* Trophy gold for award-winning accent */
 
   /* Secondary */
   --kk-rope-gold: #e6b756; /* Rope Gold */
@@ -20,7 +20,7 @@
   --kk-warm-sand: #f3e3c1; /* Warm Sand - section backgrounds */
   --kk-mist-gray: #d9e3ea; /* Mist Gray - dividers */
   --kk-whitecap: #ffffff; /* Whitecap - card backgrounds */
-  --kk-charcoal-ink: #1b1b1e; /* Charcoal Ink - text on light */
+  --kk-charcoal-ink: #102027; /* Charcoal Ink - text on light */
 }
 
 html,
