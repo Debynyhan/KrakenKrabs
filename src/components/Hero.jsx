@@ -96,8 +96,17 @@ export default function Hero() {
 
         <div className="absolute inset-0 flex items-end">
           <div className="mx-auto max-w-7xl w-full px-4 pb-8">
-            <h1 className="text-4xl md:text-6xl font-black" style={{ textShadow: "0 6px 18px rgba(0,0,0,0.55)" }}>
-              <span className="hero-shimmer" style={{ backgroundImage: "linear-gradient(90deg, var(--kk-golden-treasure), rgba(255,255,255,0.95), var(--kk-golden-treasure))" }}>
+            <h1
+              className="text-4xl md:text-6xl font-black"
+              style={{ textShadow: "0 6px 18px rgba(0,0,0,0.55)" }}
+            >
+              <span
+                className="hero-shimmer"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, var(--kk-golden-treasure), rgba(255,255,255,0.95), var(--kk-golden-treasure))",
+                }}
+              >
                 Let’s Get It Kraken.
               </span>
             </h1>

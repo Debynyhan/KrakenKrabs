@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
     // Load env vars from .env files
     const env = loadEnv(mode, process.cwd(), '')
 
@@ -12,7 +12,30 @@ export default defineConfig(({ mode }) => {
             .replace(/^https?:\/\//i, '')
             .replace(/\/$/, '')
             .trim()
-    const TUNNEL_HOST = normalizeHost(env.TUNNEL_HOST)
+
+    // Try ordered detection for tunnel host:
+    // 1. Explicit env var TUNNEL_HOST
+    // 2. Local ngrok agent API (http://127.0.0.1:4040/api/tunnels)
+    // 3. Empty (no tunnel)
+    let TUNNEL_HOST = normalizeHost(env.TUNNEL_HOST)
+
+    if (!TUNNEL_HOST) {
+        try {
+            // Node 18+ has global fetch; use it to query the ngrok local API
+            const res = await fetch('http://127.0.0.1:4040/api/tunnels');
+            if (res && res.ok) {
+                const data = await res.json();
+                // pick first https or http tunnel public_url
+                const pub = (data.tunnels || []).find(t => t.public_url && /https?:\/\//.test(t.public_url));
+                if (pub && pub.public_url) {
+                    TUNNEL_HOST = normalizeHost(pub.public_url);
+                }
+            }
+        } catch (e) {
+            // silent fallback — no local ngrok API reachable
+        }
+    }
+
     const DISABLE_HMR = env.DISABLE_HMR === '1' || env.DISABLE_HMR === 'true'
 
     // When tunneling Vite dev server, Vite uses many module requests in dev (native ESM).
