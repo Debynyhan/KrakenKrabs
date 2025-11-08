@@ -26,7 +26,7 @@ export const SEA = {
     trench: "#C6F0FF", // Stronger water background (light blue)
     midnight: "#003247", // Deep ocean blue for cards/hero overlays
     kelp: "#2D6A4F", // Seaweed Green
-    tide: "#00A4CE", // Vibrant Aqua (slightly tempered)
+    tide: "#007A9C", // Vibrant Aqua (darkened for WCAG AA)
     turquoise: "#D4AF37", // Trophy Gold
     foam: "#FFFFFF", // Light foam (text on dark cards)
     sand: "#F3E3C1", // Warm Sand

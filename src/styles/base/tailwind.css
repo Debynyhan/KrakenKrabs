@@ -7,7 +7,7 @@
   /* Primary - refreshed for lighter water background + award palette */
   --kk-abyss: #c6f0ff; /* Stronger water background (light blue) */
   --kk-deep-sea: #002e4d; /* Deep ocean blue for cards/hero overlays */
-  --kk-aqua-wave: #00b4d8; /* Vibrant aqua for accents */
+  --kk-aqua-wave: #007A9C; /* Vibrant aqua for accents (darkened for WCAG AA) */
   --kk-kraken-red: #ff6b35; /* Warm coral accent */
   --kk-golden-treasure: #d4af37; /* Trophy gold for award-winning accent */
 
@@ -107,7 +107,12 @@ body {
   }
 }
 .hero-shimmer {
-  background-image: linear-gradient(90deg, rgba(212,175,55,0.95) 0%, rgba(255,255,255,0.95) 50%, rgba(212,175,55,0.95) 100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(212, 175, 55, 0.95) 100%
+  );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
